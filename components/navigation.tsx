@@ -1,10 +1,11 @@
 'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useState } from 'react';
 
 function Navigation() {
   const path = usePathname();
-  console.log('현재경로', path);
+  const [count, setCount] = useState(0);
 
   return (
     <nav>
@@ -16,6 +17,9 @@ function Navigation() {
         <li>
           <Link href="about-us">About Us</Link>
           {path === '/about-us' ? '✨' : ''}
+        </li>
+        <li>
+          <button onClick={() => setCount((prev) => prev + 1)}>{count}</button>
         </li>
       </ul>
     </nav>
